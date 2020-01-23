@@ -1,0 +1,14 @@
+.tagAttributes {
+  padding: 10px 0;
+}
+.tagAttributes .tagAttribute {
+  font-size: 15px;
+  color: #666;
+  margin-left: 5px;
+  transition: all 0.45ms;
+  cursor: pointer;
+}
+
+.tagAttributes .tagAttribute:hover {
+  color: #ff5c00;
+}
