@@ -1,1 +1,1 @@
-export const baseApiURL = "https://shopinhands.com";
+export const baseApiURL = 'https://nobabi.walibd.com';
