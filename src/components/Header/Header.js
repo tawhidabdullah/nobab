@@ -50,7 +50,7 @@ class Header extends Component {
       const navItemsContentRes = await axios.get(
         `${baseApiURL}/api/component/detail/name/navlinks`
       );
-      const navItemsContent = navItemsContentRes.data.items;
+      const navItemsContent = navItemsContentRes.data && navItemsContentRes.data.items;
 
       this.setState({
         ...this.state,
@@ -73,7 +73,7 @@ class Header extends Component {
       const topLeftContentRes = await axios.get(
         `${baseApiURL}/api/component/detail/name/welcome`
       );
-      const topLeftContent = topLeftContentRes.data.items;
+      const topLeftContent = topLeftContentRes.data && topLeftContentRes.data.items;
 
       this.setState({
         ...this.state,
@@ -95,7 +95,7 @@ class Header extends Component {
       const logoContentRes = await axios.get(
         `${baseApiURL}/api/component/detail/name/logo`
       );
-      const logoContent = logoContentRes.data.items;
+      const logoContent = logoContentRes.data && logoContentRes.data.items;
 
       this.setState({
         ...this.state,
@@ -116,7 +116,7 @@ class Header extends Component {
       const navItemsContentRes = await axios.get(
         `${baseApiURL}/api/component/detail/name/navlinks`
       );
-      const navItemsContent = navItemsContentRes.data.items;
+      const navItemsContent = navItemsContentRes.data && navItemsContentRes.data.items;
 
       this.setState({
         ...this.state,
@@ -203,7 +203,7 @@ class Header extends Component {
         `${baseApiURL}/api/component/detail/name/hotline`
       );
 
-      const hotlineContent = hotlineContentRes.data.items;
+      const hotlineContent = hotlineContentRes.data && hotlineContentRes.data.items;
 
       this.setState({
         ...this.state,

@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { getProductAction } from "../../actions/productAction";
-import Carousel from "../../components/Carousel";
-import { connect } from "react-redux";
-import Products from "./products";
-import "./Home.scss";
-import { withRouter } from "react-router-dom";
-import Spinner from "../../components/commonFeilds/Spinner";
-import Footer from "../../components/Footer/Footer";
-import axios from "axios";
-import { baseApiURL } from "../../constants/variable";
-import { getElement, isElementExists } from "../../utilities/elementHelpers";
+import React, { Component } from 'react';
+import { getProductAction } from '../../actions/productAction';
+import Carousel from '../../components/Carousel';
+import { connect } from 'react-redux';
+import Products from './products';
+import './Home.scss';
+import { withRouter } from 'react-router-dom';
+import Spinner from '../../components/commonFeilds/Spinner';
+import Footer from '../../components/Footer/Footer';
+import axios from 'axios';
+import { baseApiURL } from '../../constants/variable';
+import { getElement, isElementExists } from '../../utilities/elementHelpers';
 
 class Home extends Component {
 	state = {
@@ -80,7 +80,7 @@ class Home extends Component {
 				<div className='top-tags'>
 					<h5
 						className='top-tags-desc'
-						onClick={() => this.props.history.push("/cart")}
+						onClick={() => this.props.history.push('/cart')}
 					>
 						Top Tags:
 					</h5>
@@ -102,7 +102,7 @@ class Home extends Component {
 										</h5>
 									);
 							  })
-							: ""}
+							: ''}
 					</div>
 				</div>
 				<section className='image-slider-section'>
@@ -122,13 +122,13 @@ class Home extends Component {
 						<div
 							className='col-md-3 col-sm-12'
 							style={{
-								height: "80vh"
+								height: '80vh'
 							}}
 						>
 							<div
 								className='row'
 								style={{
-									height: "100%"
+									height: '100%'
 								}}
 							>
 								{sliderRight &&
@@ -138,39 +138,39 @@ class Home extends Component {
 											<div
 												className='col-md-12'
 												style={{
-													height: "48%",
+													height: '48%',
 													alignSelf: `${
-														index === 1 ? "flex-end" : "flex-start"
+														index === 1 ? 'flex-end' : 'flex-start'
 													}`
 												}}
 											>
 												{(item.elements &&
-													isElementExists(item.elements, "url") && (
+													isElementExists(item.elements, 'url') && (
 														<a
-															href={`${getElement(item.elements, "url").value}`}
+															href={`${getElement(item.elements, 'url').value}`}
 														>
 															<img
 																style={{
-																	width: "100%",
-																	height: "100%",
-																	objectFit: "cover"
+																	width: '100%',
+																	height: '100%',
+																	objectFit: 'cover'
 																}}
 																src={`${baseApiURL}${item.elements &&
-																	isElementExists(item.elements, "img") &&
-																	getElement(item.elements, "img").value}`}
+																	isElementExists(item.elements, 'img') &&
+																	getElement(item.elements, 'img').value}`}
 																alt='Right Slider'
 															/>
 														</a>
 													)) || (
 													<img
 														style={{
-															width: "100%",
-															height: "100%",
-															objectFit: "cover"
+															width: '100%',
+															height: '100%',
+															objectFit: 'cover'
 														}}
 														src={`${baseApiURL}${item.elements &&
-															isElementExists(item.elements, "img") &&
-															getElement(item.elements, "img").value}`}
+															isElementExists(item.elements, 'img') &&
+															getElement(item.elements, 'img').value}`}
 														alt='Right Slider'
 													/>
 												)}
@@ -182,25 +182,27 @@ class Home extends Component {
 					</div>
 				</section>
 
-				{categories && categories.length > 0 ? (
+				{!isLoading && categories && categories.length > 0 ? (
 					<>
-						{categories.map(cat => {
-							if (cat.name === "Uncategorized") {
-							}
-							return (
-								<React.Fragment key={cat._id}>
-									<Products
-										categoryId={cat._id}
-										categoryName={cat.name}
-										products={cat.product}
-									/>
-								</React.Fragment>
-							);
-						})}
+						<div className='categoryItemContainer'>
+							{categories.map(cat => {
+								return (
+									<div className='dcategoryItem'>
+										<div className='dcategoryItem__imgContainer'>
+											<img src={cat.image && `${baseApiURL}${cat.image}`} />
+										</div>
+										<div className='dcategoryItem__textContainer'>
+											<h2 className='dcategoryItem__title'>{cat.name}</h2>
+										</div>
+									</div>
+								);
+							})}
+						</div>
+
 						<Footer />
 					</>
 				) : (
-					<Spinner />
+					isLoading && <Spinner />
 				)}
 			</React.Fragment>
 		);
