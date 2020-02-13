@@ -121,7 +121,6 @@ $color-nobab-dark-2: #17252a;
 
 .product-card {
   padding: 5px;
-  padding: 5px;
   min-width: 250px;
   max-width: 250px;
   display: flex;
@@ -137,7 +136,7 @@ $color-nobab-dark-2: #17252a;
   height: 300px;
   width: 100%;
   position: relative;
-  border-radius: 5px;
+  // border-radius: 5px;
 }
 
 @media screen and (max-width: 1308px) {
@@ -177,7 +176,7 @@ $color-nobab-dark-2: #17252a;
   background-color: rgba(0, 0, 0, 0.2); /* Black background with opacity */
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
-  border-radius: 5px;
+  // border-radius: 5px;
 }
 
 .product-top img {
@@ -195,7 +194,7 @@ $color-nobab-dark-2: #17252a;
   margin-left: 0;
   width: 70px;
   z-index: 20;
-  left: -62px;
+  // left: -62px;
 }
 
 .overlay-right .fa {
@@ -223,14 +222,18 @@ $color-nobab-dark-2: #17252a;
 
 .product-card:hover .overlay-right {
   opacity: 1;
-  margin-left: 5%;
+  // margin-left: 5%;
   transition: 0.5s;
 }
 
 /* Product bottom css */
 
 .product-bottom {
+  min-height: 80px;
   padding-top: 10px;
+  // padding-bottom: 20px;
+  width: 100%;
+  justify-content: center;
 }
 .product-bottom .fa {
   color: $color-nobab-primary-1;
@@ -258,8 +261,13 @@ $color-nobab-dark-2: #17252a;
 .product-bottom .product-bottom-title {
   font-weight: bold;
   color: $color-nobab-dark-2;
-  padding: 10px 0;
+  padding: 10px 10px !important;
   font-size: 16px;
+  padding: 0 4px;
+  width: 10;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .product-bottom-price {
