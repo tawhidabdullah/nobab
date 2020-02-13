@@ -29,30 +29,30 @@ const ShoppingCart = props => {
           <Modal.Title>You are not Authenticated </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          In Order to Order any Product You have to be Logged In
+          In Checkout any Product You have to be Logged In
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleLogin}>
+          <Button variant='secondary' onClick={handleLogin}>
             Login
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant='primary' onClick={handleClose}>
             Cancel
           </Button>
         </Modal.Footer>
       </Modal>
-      <div className="container">
-        <div className="card shopping-cart">
+      <div className='container'>
+        <div className='card shopping-cart'>
           <div
-            className="card-header  text-light"
+            className='card-header  text-light'
             style={{
               background: '#F09D51'
             }}
           >
-            <i className="fa fa-shopping-cart pr-2" aria-hidden="true" />
+            <i className='fa fa-shopping-cart pr-2' aria-hidden='true' />
             Shopping Cart
-            <div className="clearfix" />
+            <div className='clearfix' />
           </div>
-          <div className="card-body">
+          <div className='card-body'>
             {props.cartItemCount ? (
               props.cartItems.map(cart => (
                 <React.Fragment key={cart._id}>
@@ -61,7 +61,7 @@ const ShoppingCart = props => {
               ))
             ) : (
               <h1
-                className=" mt-5 text-center "
+                className=' mt-5 text-center '
                 style={{
                   fontSize: '6vh',
                   color: '#777',
@@ -75,7 +75,7 @@ const ShoppingCart = props => {
           </div>
 
           <div
-            className="card-footer"
+            className='card-footer'
             style={{
               display: 'flex',
               justifyContent: 'flex-start',
@@ -90,7 +90,7 @@ const ShoppingCart = props => {
                     e.preventDefault();
                     props.history.push('/');
                   }}
-                  className="btn btn-primary"
+                  className='btn btn-primary'
                   style={{
                     background: '#ff5c00',
                     borderColor: '#ff5c00',
@@ -101,7 +101,7 @@ const ShoppingCart = props => {
                   Continue Shopping
                 </a>
                 <a
-                  className="btn btn-primary"
+                  className='btn btn-primary'
                   style={{
                     background: '#ff5c00',
                     borderColor: '#ff5c00',
@@ -121,7 +121,7 @@ const ShoppingCart = props => {
                       props.history.push('/checkout');
                     } else handleShow();
                   }}
-                  className="btn btn-primary"
+                  className='btn btn-primary'
                   style={{
                     background: '#ff5c00',
                     borderColor: '#ff5c00',
@@ -138,7 +138,7 @@ const ShoppingCart = props => {
                   e.preventDefault();
                   props.history.push('/');
                 }}
-                className="btn btn-primary"
+                className='btn btn-primary'
                 style={{
                   background: '#ff5c00',
                   borderColor: '#ff5c00',
@@ -151,13 +151,13 @@ const ShoppingCart = props => {
             )}
 
             <div
-              className="pull-right"
+              className='pull-right'
               style={{ margin: '10px' }}
               style={{
                 flexGrow: 1
               }}
             >
-              <div className="pull-right" style={{ margin: '5px' }}>
+              <div className='pull-right' style={{ margin: '5px' }}>
                 Total price: <b>{formatMoney(props.totalPrice)}৳</b>
               </div>
             </div>

@@ -80,7 +80,7 @@ class Register extends Component {
                   fontWeight: 400
                 }}
               >
-                Sign Up
+                Sign Up To Nobabi
               </h1>
               <p
                 className='lead text-center'

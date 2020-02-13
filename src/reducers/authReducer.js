@@ -15,7 +15,7 @@ const initialState = {
   isAdmin: false,
   user: {},
   order: {
-    isLoading: false,
+    isLoading: true,
     orders: []
   },
   isLoading: false

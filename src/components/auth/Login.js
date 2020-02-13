@@ -81,7 +81,7 @@ class Login extends Component {
                   fontWeight: 400
                 }}
               >
-                Sign in to your ShopInHands Account
+                Sign in to your Nobabi Account
               </p>
               <form onSubmit={this.onSubmit}>
                 <TextFeildGroup

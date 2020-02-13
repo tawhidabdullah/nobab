@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Modal, Button } from 'react-bootstrap';
 import Spinner from '../commonFeilds/Spinner';
+
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
@@ -26,11 +28,32 @@ class Header extends Component {
     logoContent: {},
     topLeftContent: {},
     hotlineContent: {},
-    navItemsContent: []
+    navItemsContent: [],
+    show: false
+  };
+
+  handleClose = () => {
+    this.setState({
+      ...this.state,
+      show: false
+    });
+  };
+
+  handleShow = () => {
+    this.setState({
+      ...this.state,
+      show: true
+    });
+  };
+
+  handleLogin = () => {
+    this.props.history.push('/login');
+    this.handleClose();
   };
 
   handleToggleCartBar = () => {
     this.setState({
+      ...this.state,
       isShowCartBar: !this.state.isShowCartBar
     });
   };
@@ -259,12 +282,12 @@ class Header extends Component {
 
     return (
       <>
-        <div className="top-head-1">
-          <div className="langandcurrency">
+        <div className='top-head-1'>
+          <div className='langandcurrency'>
             <span
               style={{
                 fontSize: '14px',
-                color:'##17252a'
+                color: '##17252a'
               }}
             >
               {topLeftContent &&
@@ -290,17 +313,17 @@ class Header extends Component {
               USD <i className="fa fa-angle-down"></i>
             </p> */}
           </div>
-          <div className="trackorderandauthlinks">
+          <div className='trackorderandauthlinks'>
             {(isAuthenticate && user && (
               <>
                 <p>
-                  <i className="fa fa-dashboard"></i>
+                  <i className='fa fa-dashboard'></i>
                   <span onClick={() => this.props.history.push('/dashboard')}>
                     Dashboard
                   </span>{' '}
                 </p>
                 <p>
-                  <i className="fa fa-user"></i>
+                  <i className='fa fa-user'></i>
                   <span onClick={() => this.props.logoutUser()}>
                     Logout
                   </span>{' '}
@@ -308,7 +331,7 @@ class Header extends Component {
               </>
             )) || (
               <p>
-                <i className="fa fa-user"></i>
+                <i className='fa fa-user'></i>
                 <span onClick={() => this.props.history.push('/login')}>
                   Login
                 </span>{' '}
@@ -321,14 +344,14 @@ class Header extends Component {
           </div>
         </div>
         <div
-          className="navbar"
+          className='navbar'
           style={{
             position: 'relative'
           }}
         >
-          <div className="navbar-center">
+          <div className='navbar-center'>
             <div
-              className="navbar-center-logoBox"
+              className='navbar-center-logoBox'
               // onClick={() => this.props.history.push('/')}
             >
               {/* <img
@@ -358,7 +381,7 @@ class Header extends Component {
                               src={`${baseApiURL}${item.elements &&
                                 isElementExists(item.elements, 'img') &&
                                 getElement(item.elements, 'img').value}`}
-                              alt="ShoppingHands"
+                              alt='ShoppingHands'
                             />
                           </a>
                         )) || (
@@ -371,27 +394,27 @@ class Header extends Component {
                           src={`${baseApiURL}${item.elements &&
                             isElementExists(item.elements, 'img') &&
                             getElement(item.elements, 'img').value}`}
-                          alt="ShoppingHands"
+                          alt='ShoppingHands'
                         />
                       )}
                     </React.Fragment>
                   );
                 })}
             </div>
-            <div className="navbar-center-categoryAndSearch">
-              <div className="categoryAndSearchFeilds">
-                <div className="s003">
+            <div className='navbar-center-categoryAndSearch'>
+              <div className='categoryAndSearchFeilds'>
+                <div className='s003'>
                   <form onSubmit={this.handleSearch}>
-                    <div className="inner-form">
-                      <div className="input-field first-wrap">
-                        <div className="input-select">
+                    <div className='inner-form'>
+                      <div className='input-field first-wrap'>
+                        <div className='input-select'>
                           <select
-                            data-trigger="choices"
-                            name="choices-single-default"
+                            data-trigger='choices'
+                            name='choices-single-default'
                             value={categorySelectValue}
                             onChange={e => this.handleCategorySelectChange(e)}
                           >
-                            <option placeholder="">Categories</option>
+                            <option placeholder=''>Categories</option>
                             {categories &&
                               categories.length > 0 &&
                               categories.map(item => {
@@ -405,30 +428,30 @@ class Header extends Component {
                           </select>
                         </div>
                       </div>
-                      <div className="input-field second-wrap">
+                      <div className='input-field second-wrap'>
                         <input
-                          id="search"
-                          type="text"
-                          placeholder="Enter Keywords?"
-                          name="searchbar"
+                          id='search'
+                          type='text'
+                          placeholder='Enter Keywords?'
+                          name='searchbar'
                           value={this.state.searchBarValue}
                           onChange={this.handleSearchBar}
                         />
                       </div>
-                      <div className="input-field third-wrap">
-                        <button className="btn-search">
+                      <div className='input-field third-wrap'>
+                        <button className='btn-search'>
                           <svg
-                            className="svg-inline--fa fa-search fa-w-16"
-                            aria-hidden="true"
-                            data-prefix="fas"
-                            data-icon="search"
-                            role="img"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 512 512"
+                            className='svg-inline--fa fa-search fa-w-16'
+                            aria-hidden='true'
+                            data-prefix='fas'
+                            data-icon='search'
+                            role='img'
+                            xmlns='http://www.w3.org/2000/svg'
+                            viewBox='0 0 512 512'
                           >
                             <path
-                              fill="currentColor"
-                              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                              fill='currentColor'
+                              d='M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z'
                             ></path>
                           </svg>
                         </button>
@@ -439,16 +462,16 @@ class Header extends Component {
               </div>
             </div>
             <div
-              className="navbar-center-cartBox"
+              className='navbar-center-cartBox'
               style={{
                 marginRight: '10px'
               }}
             >
-              <div className="cartt-btn" onClick={this.handleToggleCartBar}>
-                <span className="nav-icon">
-                  <i className="fa fa-shopping-cart"></i>
+              <div className='cartt-btn' onClick={this.handleToggleCartBar}>
+                <span className='nav-icon'>
+                  <i className='fa fa-shopping-cart'></i>
                 </span>
-                <div className="cartt-items">
+                <div className='cartt-items'>
                   {this.props.cartLength ? ` ${this.props.cartLength}` : 0}
                 </div>
               </div>
@@ -456,11 +479,11 @@ class Header extends Component {
           </div>
         </div>
 
-        <div className="navbar">
-          <div className="navbar-center">
-            <div className="all-department">
+        <div className='navbar'>
+          <div className='navbar-center'>
+            <div className='all-department'>
               <span
-                className="nav-icon nav-menu"
+                className='nav-icon nav-menu'
                 style={{
                   display: 'block',
                   fontSize: '18px',
@@ -471,7 +494,7 @@ class Header extends Component {
                 }}
               >
                 <i
-                  className="fa fa-bars"
+                  className='fa fa-bars'
                   style={{
                     fontSize: '15px',
                     color: '#3aafa9'
@@ -489,7 +512,7 @@ class Header extends Component {
                   All Departments
                 </span>
               </span>
-              <div className="all-department-sideMenu">
+              <div className='all-department-sideMenu'>
                 <ul>
                   {(categories &&
                     categories.length > 0 &&
@@ -535,7 +558,7 @@ class Header extends Component {
               </div>
             </div> */}
 
-            <div className="navbar-center-navItems">
+            <div className='navbar-center-navItems'>
               {/* {!isLoading && mainMenu && mainMenu.length > 0 && (
                 <>
                   <span onClick={() => this.props.history.push('/')}>Home</span>
@@ -564,16 +587,16 @@ class Header extends Component {
                   );
                 })}
             </div>
-            <div className="navbar-center-phoneNumberbox">
-              <span className="phone">
+            <div className='navbar-center-phoneNumberbox'>
+              <span className='phone'>
                 {hotlineContent &&
                   hotlineContent.length > 0 &&
                   hotlineContent.map(item => {
                     return (
                       <>
-                        <i className="fa fa-phone" />
-                        <span className="phoneText">hotline</span>
-                        <span className="phoneNumber">
+                        <i className='fa fa-phone' />
+                        <span className='phoneText'>hotline</span>
+                        <span className='phoneNumber'>
                           {`${item.elements &&
                             isElementExists(item.elements, 'text') &&
                             getElement(item.elements, 'text').value}`}
@@ -592,12 +615,12 @@ class Header extends Component {
           }
         >
           <div className={isShowCartBar ? 'cart showCart' : 'cart'}>
-            <span className="close-cart" onClick={this.handleToggleCartBar}>
-              <i className="fa fa-window-close"></i>
+            <span className='close-cart' onClick={this.handleToggleCartBar}>
+              <i className='fa fa-window-close'></i>
             </span>
             {/* <h2>Your Cart</h2> */}
 
-            <div className="cart-content">
+            <div className='cart-content'>
               {(this.props.cartItems.length &&
                 this.props.cartItems.map(cartItem => {
                   return (
@@ -611,9 +634,9 @@ class Header extends Component {
                     </React.Fragment>
                   );
                 })) || (
-                <div className="cart-footer">
+                <div className='cart-footer'>
                   <button
-                    className="clear-cart banner-btn"
+                    className='clear-cart banner-btn'
                     onClick={this.handleToggleCartBar}
                   >
                     Add Products
@@ -622,13 +645,13 @@ class Header extends Component {
               )}
             </div>
             {cartItems && cartItems.length > 0 && (
-              <div className="cart-footer">
-                <div className="cart-total">
+              <div className='cart-footer'>
+                <div className='cart-total'>
                   <h3>Your total :</h3>
                   <span>৳{totalPrice}</span>
                 </div>
                 <button
-                  className="clear-cart banner-btn"
+                  className='clear-cart banner-btn'
                   onClick={() => {
                     this.handleToggleCartBar();
                     this.props.history.push('/cart');
@@ -637,10 +660,17 @@ class Header extends Component {
                   View Cart
                 </button>
                 <button
-                  className="clear-cart banner-btn"
-                  onClick={() => {
-                    this.handleToggleCartBar();
-                    this.props.history.push('/checkout');
+                  className='clear-cart banner-btn'
+                  onClick={e => {
+                    e.preventDefault();
+
+                    if (isAuthenticate) {
+                      this.handleToggleCartBar();
+                      this.props.history.push('/checkout');
+                    } else {
+                      this.handleToggleCartBar();
+                      this.handleShow();
+                    }
                   }}
                 >
                   Checkout
@@ -654,6 +684,27 @@ class Header extends Component {
             borderBottom: '1px solid #eee'
           }}
         ></div>
+
+        <Modal
+          show={this.state.show}
+          onHide={this.handleClose}
+          animation={false}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>You are not Authenticated </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            In Checkout any Product You have to be Logged In
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant='secondary' onClick={this.handleLogin}>
+              Login
+            </Button>
+            <Button variant='primary' onClick={this.handleClose}>
+              Cancel
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </>
     );
   }

@@ -8,6 +8,7 @@ import { baseApiURL } from '../../constants/variable';
 import { useAlert } from 'react-alert';
 import './checkout.scss';
 import GifSpinner from '../../components/Spinner/GifSpinner/GifSpinner';
+import { setCurrentUser } from '../../actions/authAction';
 
 const Checkout = props => {
   const [selectedPaymentGateway, setSelectedPaymentGateway] = React.useState(
@@ -17,6 +18,29 @@ const Checkout = props => {
   const [isOrderError, setIsOrderError] = React.useState(false);
   const [isOrderSuccess, setisOrderSuccess] = React.useState(false);
   const [productErrorText, setProductErrorText] = React.useState('');
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+
+  React.useEffect(() => {
+    const getCurrentUser = async () => {
+      try {
+        const res = await axios({
+          url: `${baseApiURL}/customer/api/detail`,
+          method: 'get',
+          withCredentials: true
+        });
+        props.setCurrentUser(res.data);
+        setIsAuthenticated(true);
+      } catch (err) {
+        setIsAuthenticated(false);
+        props.setCurrentUser({});
+        props.history.push('/login');
+        // console.log('something went wrong when fetching the user data', err);
+      }
+    };
+    if (!props.auth.isAuthenticate) {
+      getCurrentUser();
+    }
+  }, [props.auth]);
 
   const [fields, setfields] = React.useState({
     first_name: '',
@@ -109,11 +133,12 @@ const Checkout = props => {
   };
 
   return (
-    (isAuthLoading && <GifSpinner />) || (
-      <div className="checkout">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-7">
+    (isAuthLoading && <GifSpinner />) ||
+    (!isAuthenticated && (
+      <div className='checkout'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-7'>
               {isOrderSuccess ? (
                 <Alert variant={'success'}>Order Created Successfully</Alert>
               ) : (
@@ -125,15 +150,15 @@ const Checkout = props => {
               ) : (
                 ''
               )}
-              <h2 className="shipping-heading">shipping Address</h2>
+              <h2 className='shipping-heading'>shipping Address</h2>
               <div
-                className="shipping-fields"
+                className='shipping-fields'
                 style={{
                   marginTop: '15px'
                 }}
               >
                 <Form>
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group controlId='formBasicEmail'>
                     <Form.Label
                       style={{
                         marginBottom: '10px'
@@ -142,19 +167,19 @@ const Checkout = props => {
                       Shipping Address
                     </Form.Label>
                     <Form.Control
-                      name="address"
-                      type="text"
-                      placeholder="Shipping Address"
+                      name='address'
+                      type='text'
+                      placeholder='Shipping Address'
                       onChange={handleFieldsChange}
                     />
-                    <Form.Text className="text-danger">
+                    <Form.Text className='text-danger'>
                       {errors.address && errors.address}
                     </Form.Text>
                   </Form.Group>
 
                   <Button
-                    variant="primary"
-                    type="submit"
+                    variant='primary'
+                    type='submit'
                     style={{
                       background: '#0000FE',
                       borderColor: '#fff'
@@ -169,10 +194,10 @@ const Checkout = props => {
                 </Form>
               </div>
             </div>
-            <div className="col-md-5">
-              <div className="row">
-                <div className="col-md-12">
-                  <div className="order-summary">
+            <div className='col-md-5'>
+              <div className='row'>
+                <div className='col-md-12'>
+                  <div className='order-summary'>
                     <h2
                       style={{
                         marginBottom: '10px'
@@ -180,7 +205,7 @@ const Checkout = props => {
                     >
                       Order Summary
                     </h2>
-                    <div className="order-summary-price">
+                    <div className='order-summary-price'>
                       <h3>{props.cartItems.length} items in Cart</h3>
                       <span>৳{props.totalPrice}</span>
                     </div>
@@ -283,7 +308,7 @@ const Checkout = props => {
           </div>
         </div>
       </div>
-    )
+    ))
   );
 };
 
@@ -300,4 +325,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, null)(withRouter(Checkout));
+export default connect(mapStateToProps, { setCurrentUser })(
+  withRouter(Checkout)
+);
