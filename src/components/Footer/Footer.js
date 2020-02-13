@@ -11,6 +11,7 @@ const Footer = () => {
   const [servicesContent, setServicesContent] = useState({});
   const [aboutUsContent, setAboutUsContent] = useState({});
   const [isLoading, setIsLoading] = useState({});
+
   React.useEffect(() => {
     const getFooterContent = async () => {
       try {
@@ -71,23 +72,23 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="footer">
-      <div className="row">
+    <footer className='footer'>
+      <div className='row'>
         {addressContent && addressContent && addressContent.length > 0 && (
-          <div className="col-md-3">
-            <div className="our__categories">
+          <div className='col-md-3'>
+            <div className='our__categories'>
               {/* {ReactHtmlParser(addressContent.rendered)} */}
-              <span className="widget-title">
+              <span className='widget-title'>
                 {addressContent &&
                   addressContent[0].name &&
                   addressContent[0].name}
               </span>
-              <ul className="menu">
+              <ul className='menu'>
                 {addressContent &&
                   addressContent.length > 0 &&
                   addressContent.map(item => {
                     return (
-                      <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-244">
+                      <li className='menu-item menu-item-type-custom menu-item-object-custom menu-item-244'>
                         {(item.elements &&
                           isElementExists(item.elements, 'url') && (
                             <a
@@ -123,16 +124,16 @@ const Footer = () => {
         {accountContent &&
           accountContent.items &&
           accountContent.items.length > 0 && (
-            <div className="col-md-3">
-              <div className="our__categories">
+            <div className='col-md-3'>
+              <div className='our__categories'>
                 {/* {ReactHtmlParser(accountContent.rendered)} */}
-                <span className="widget-title">{accountContent.name}</span>
-                <ul className="menu">
+                <span className='widget-title'>{accountContent.name}</span>
+                <ul className='menu'>
                   {accountContent.items.map(item => {
                     return (
                       <li
                         key={item.name}
-                        className="menu-item menu-item-type-custom menu-item-object-custom menu-item-244"
+                        className='menu-item menu-item-type-custom menu-item-object-custom menu-item-244'
                       >
                         {(item.elements &&
                           isElementExists(item.elements, 'url') && (
@@ -161,16 +162,16 @@ const Footer = () => {
         {aboutUsContent &&
           aboutUsContent.items &&
           aboutUsContent.items.length > 0 && (
-            <div className="col-md-3">
-              <div className="our__categories">
+            <div className='col-md-3'>
+              <div className='our__categories'>
                 {/* {ReactHtmlParser(aboutUsContent.rendered)} */}
-                <span className="widget-title">{aboutUsContent.name}</span>
-                <ul className="menu">
+                <span className='widget-title'>{aboutUsContent.name}</span>
+                <ul className='menu'>
                   {aboutUsContent.items.map(item => {
                     return (
                       <li
                         key={item.name}
-                        className="menu-item menu-item-type-custom menu-item-object-custom menu-item-244"
+                        className='menu-item menu-item-type-custom menu-item-object-custom menu-item-244'
                       >
                         {(item.elements &&
                           isElementExists(item.elements, 'url') && (
@@ -199,16 +200,16 @@ const Footer = () => {
         {servicesContent &&
           servicesContent.items &&
           servicesContent.items.length > 0 && (
-            <div className="col-md-3">
-              <div className="our__categories">
+            <div className='col-md-3'>
+              <div className='our__categories'>
                 {/* {ReactHtmlParser(servicesContent.rendered)} */}
-                <span className="widget-title">{servicesContent.name}</span>
-                <ul className="menu">
+                <span className='widget-title'>{servicesContent.name}</span>
+                <ul className='menu'>
                   {servicesContent.items.map(item => {
                     return (
                       <li
                         key={item.name}
-                        className="menu-item menu-item-type-custom menu-item-object-custom menu-item-244"
+                        className='menu-item menu-item-type-custom menu-item-object-custom menu-item-244'
                       >
                         {(item.elements &&
                           isElementExists(item.elements, 'url') && (

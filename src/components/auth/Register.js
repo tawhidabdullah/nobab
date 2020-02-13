@@ -169,7 +169,7 @@ class Register extends Component {
                 <span
                   onClick={() => this.props.history.push('/login')}
                   style={{
-                    color: '#2b7a78',
+                    color: '#dd202a',
                     cursor: 'pointer'
                   }}
                 >

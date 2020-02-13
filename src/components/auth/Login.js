@@ -119,7 +119,7 @@ class Login extends Component {
                 <span
                   onClick={() => this.props.history.push('/register')}
                   style={{
-                    color: '#2b7a78',
+                    color: '#dd202a',
                     cursor: 'pointer'
                   }}
                 >

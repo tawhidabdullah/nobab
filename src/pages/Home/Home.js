@@ -23,47 +23,63 @@ class Home extends Component {
   };
 
   async componentDidMount() {
-    try {
-      this.setState({
-        ...this.state,
-        isLoading: true
-      });
+    this.setState({
+      ...this.state,
+      isLoading: true
+    });
 
+    try {
       const categoryRes = await axios.get(`${baseApiURL}/api/category/list`);
 
       const categories = categoryRes.data;
+      this.setState({
+        ...this.state,
+        categories: categories
+      });
+    } catch (err) {}
 
+    try {
       const imageContentRes = await axios.get(
         `${baseApiURL}/api/component/detail/name/slider`
       );
-
       const sliderImageContents = imageContentRes.data;
 
+      this.setState({
+        ...this.state,
+        sliderImageContents
+      });
+    } catch (err) {}
+
+    try {
       const sliderRightRes = await axios.get(
         `${baseApiURL}/api/component/detail/name/sliderRight`
       );
 
       const sliderRight = sliderRightRes.data;
 
+      this.setState({
+        ...this.state,
+        sliderRight
+      });
+    } catch (err) {}
+
+    try {
       const tagRes = await axios.get(`${baseApiURL}/api/tag/list`);
 
       const tags = tagRes.data;
 
       this.setState({
         ...this.state,
-        categories: categories,
-        sliderImageContents,
-        isLoading: false,
-        sliderRight,
         tags
       });
     } catch (err) {
-      this.setState({
-        ...this.state,
-        isLoading: false
-      });
       // console.log(err);
     }
+
+    this.setState({
+      ...this.state,
+      isLoading: false
+    });
   }
 
   render() {

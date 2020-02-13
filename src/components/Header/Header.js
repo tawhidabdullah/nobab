@@ -287,7 +287,7 @@ class Header extends Component {
             <span
               style={{
                 fontSize: '14px',
-                color: '##17252a'
+                color: '#17252a'
               }}
             >
               {topLeftContent &&
@@ -497,7 +497,7 @@ class Header extends Component {
                   className='fa fa-bars'
                   style={{
                     fontSize: '15px',
-                    color: '#3aafa9'
+                    color: '#dd202a'
                   }}
                 ></i>
                 <span
@@ -519,6 +519,9 @@ class Header extends Component {
                     categories.map(item => {
                       return (
                         <li
+                          style={{
+                            color: '#dd202a'
+                          }}
                           key={item._id}
                           onClick={() =>
                             this.props.history.push(

@@ -1,7 +1,8 @@
 $color-nobab-light-1: #feffff;
 $color-nobab-light-2: #def2f1;
-$color-nobab-primary-1: #3aafa9;
-$color-nobab-primary-2: #2b7a78;
+$color-nobab-primary-1: #dd202a;
+$color-nobab-primary-2: #dd202a;
+$color-nobal-light: #fefefe;
 $color-nobab-dark-2: #17252a;
 
 .top-head-1 {
@@ -26,26 +27,26 @@ $color-nobab-dark-2: #17252a;
   padding: 0 10px;
   font-size: 13px;
   font-weight: 500;
-  color: #555;
+  color: $color-nobab-dark-2;
 }
 
 .top-head-1 .trackorderandauthlinks p span:hover {
-  color: #ff6011;
+  color: $color-nobab-primary-1;
   cursor: pointer;
 }
 
 .top-head-1 .trackorderandauthlinks .trackorderbutton:hover {
-  color: #ff6011;
+  color: $color-nobab-primary-1;
   cursor: pointer;
 }
 
 .top-head-1 .trackorderandauthlinks .fa {
   margin: 0 5px;
-  color: #555;
+  color: $color-nobab-dark-2;
 }
 
 .top-tags-desc {
-  color: #333;
+  color: $color-nobab-dark-2;
   margin-left: 10px;
 }
 
@@ -60,13 +61,13 @@ $color-nobab-dark-2: #17252a;
 }
 
 .top-tags {
-  background: $color-nobab-light-2;
+  background: $color-nobab-primary-1;
   display: flex;
   padding: 13px;
   align-items: center;
   flex-wrap: wrap;
   font-size: 13px;
-  color: #555;
+  color: $color-nobal-light #fefefe;
 }
 
 .top-tags .tags {
@@ -79,11 +80,12 @@ $color-nobab-dark-2: #17252a;
   padding: 0 15px;
   font-weight: 500;
   line-height: 1.3;
+  color: $color-nobab-light-1;
 }
 
 .top-tags .tags h5:hover {
   cursor: pointer;
-  color: #ff5c32;
+  color: $color-nobab-primary-1;
 }
 
 .image-slider-section {
@@ -132,8 +134,8 @@ $color-nobab-dark-2: #17252a;
 
 .product-top {
   background: #fff;
-  height: 150px;
-  width: 150px;
+  height: 300px;
+  width: 100%;
   position: relative;
   border-radius: 5px;
 }
@@ -331,7 +333,7 @@ $color-nobab-dark-2: #17252a;
 }
 
 .single-product .price {
-  color: #ea4c3c;
+  color: $color-nobab-primary-1;
   font-size: 22px;
   font-weight: bold;
   padding-top: 20px;
