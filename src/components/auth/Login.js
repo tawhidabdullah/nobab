@@ -58,37 +58,74 @@ class Login extends Component {
     typeof errors === 'string' &&
       alert.error(typeof errors === 'string' && errors);
     return (
-      <div className="login">
-        <div className="container mt-5">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Log In</h1>
-              <p className="lead text-center">
+      <div className='login'>
+        <div className='container mt-5'>
+          <div className='row'>
+            <div className='col-md-8 m-auto'>
+              <h1
+                className='display-4 text-center'
+                style={{
+                  fontSize: '30px',
+                  color: '#17252a',
+                  fontWeight: 400
+                }}
+              >
+                Log In
+              </h1>
+              <p
+                className='lead text-center'
+                style={{
+                  marginTop: '10px',
+                  fontSize: '17px',
+                  color: '#17252a',
+                  fontWeight: 400
+                }}
+              >
                 Sign in to your ShopInHands Account
               </p>
               <form onSubmit={this.onSubmit}>
                 <TextFeildGroup
-                  name="username"
-                  placeholder="phone or email"
-                  type="username"
+                  name='username'
+                  placeholder='phone or email'
+                  type='username'
                   value={this.state.username}
                   onChange={this.onChange}
                   errors={errors.username}
                 />
 
                 <TextFeildGroup
-                  name="password"
-                  placeholder="password"
-                  type="password"
+                  name='password'
+                  placeholder='password'
+                  type='password'
                   value={this.state.password}
                   onChange={this.onChange}
                   errors={errors.password}
                 />
 
-                <div className="form">
-                  <input type="submit" value="Signin" id="input-submit" />{' '}
+                <div className='form'>
+                  <input type='submit' value='Signin' id='input-submit' />{' '}
                 </div>
               </form>
+              <p
+                className='lead text-center'
+                style={{
+                  marginTop: '20px',
+                  fontSize: '15px',
+                  color: '#17252a',
+                  fontWeight: 400
+                }}
+              >
+                Don't have an account ?{' '}
+                <span
+                  onClick={() => this.props.history.push('/register')}
+                  style={{
+                    color: '#2b7a78',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Signup{' '}
+                </span>
+              </p>
             </div>
           </div>
         </div>

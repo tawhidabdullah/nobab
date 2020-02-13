@@ -68,75 +68,114 @@ class Register extends Component {
     const { alert } = this.props;
     this.showError(errors);
     return (
-      <div className="register">
-        <div className="container mt-5">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Sign Up</h1>
-              <p className="lead text-center">Create your account</p>
+      <div className='register'>
+        <div className='container mt-5'>
+          <div className='row'>
+            <div className='col-md-8 m-auto'>
+              <h1
+                className='display-4 text-center'
+                style={{
+                  fontSize: '30px',
+                  color: '#17252a',
+                  fontWeight: 400
+                }}
+              >
+                Sign Up
+              </h1>
+              <p
+                className='lead text-center'
+                style={{
+                  marginTop: '10px',
+                  fontSize: '17px',
+                  color: '#17252a',
+                  fontWeight: 400
+                }}
+              >
+                Create your account
+              </p>
               <form noValidate onSubmit={this.onSubmit}>
                 <TextFeildGroup
-                  name="name"
-                  placeholder="name"
-                  type="text"
+                  name='name'
+                  placeholder='name'
+                  type='text'
                   value={this.state.name}
                   onChange={this.onChange}
                   errors={errors.name}
                 />
 
                 <TextFeildGroup
-                  name="email"
-                  placeholder="Email Address"
-                  type="email"
+                  name='email'
+                  placeholder='Email Address'
+                  type='email'
                   value={this.state.email}
                   onChange={this.onChange}
                   errors={errors.email}
                 />
 
                 <TextFeildGroup
-                  name="password"
-                  placeholder="password"
-                  type="password"
+                  name='password'
+                  placeholder='password'
+                  type='password'
                   value={this.state.password}
                   onChange={this.onChange}
                   errors={errors.password}
                 />
 
                 <TextFeildGroup
-                  name="password2"
-                  placeholder="Confirm Password"
-                  type="password"
+                  name='password2'
+                  placeholder='Confirm Password'
+                  type='password'
                   value={this.state.password2}
                   onChange={this.onChange}
                   errors={errors.password2}
                 />
 
                 <TextFeildGroup
-                  name="phone"
-                  placeholder="Phone No"
-                  type="text"
+                  name='phone'
+                  placeholder='Phone No'
+                  type='text'
                   value={this.state.phone}
                   onChange={this.onChange}
                   errors={errors.phone}
                 />
 
                 <TextFeildGroup
-                  name="address"
-                  placeholder="Address"
-                  type="text"
+                  name='address'
+                  placeholder='Address'
+                  type='text'
                   value={this.state.address}
                   onChange={this.onChange}
                   errors={errors.address}
                 />
 
-                <div className="form">
+                <div className='form'>
                   <input
-                    type="submit"
-                    value="Create Account"
-                    id="input-submit"
+                    type='submit'
+                    value='Create Account'
+                    id='input-submit'
                   />{' '}
                 </div>
               </form>
+              <p
+                className='lead text-center'
+                style={{
+                  marginTop: '20px',
+                  fontSize: '15px',
+                  color: '#17252a',
+                  fontWeight: 400
+                }}
+              >
+                have an account ?{' '}
+                <span
+                  onClick={() => this.props.history.push('/login')}
+                  style={{
+                    color: '#2b7a78',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Signin{' '}
+                </span>
+              </p>
             </div>
           </div>
         </div>

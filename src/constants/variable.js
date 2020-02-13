@@ -1,1 +1,1 @@
-export const baseApiURL = 'https://nobabi.walibd.com';
+export const baseApiURL = 'https://nobabi.com.bd';

@@ -1,3 +1,7 @@
+$color-nobab-primary-1: #3aafa9;
+$color-nobab-primary-2: #2b7a78;
+$color-nobab-dark-2: #17252a;
+
 .form {
   max-width: 600px;
   text-align: center;
@@ -6,7 +10,7 @@
 .form input {
   border: 0;
   outline: 0;
-  padding: 1em;
+  padding: 0.9em;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
   border-radius: 8px;
@@ -17,6 +21,8 @@
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   box-shadow: 3px 3px 5px rgba(19, 18, 18, 0.1);
   resize: none;
+  font-size: 15px;
+  color: $color-nobab-dark-2;
 }
 
 @media (max-width: 480px) {
@@ -29,7 +35,7 @@
 /* Clearfix */
 .cf:before,
 .cf:after {
-  content: " ";
+  content: ' ';
   /* 1 */
   display: table;
   /* 2 */
